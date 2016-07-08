@@ -16,6 +16,7 @@ public class CommieQuest {
 		Panel panel = new Panel();
 		frame.add(panel, BorderLayout.CENTER);
 		
+		// Fit window to screen
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screensize.getWidth();
 		int height = (int)screensize.getHeight();
