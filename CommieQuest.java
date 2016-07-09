@@ -6,6 +6,10 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class CommieQuest {
+	static Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+	public static int width = (int)screensize.getWidth();
+	public static int height = (int)screensize.getHeight() - 100;
+	
 	public static void main(String[] args) {
 		// Creating new frame
 		JFrame frame = new JFrame("Commie Quest");
@@ -17,9 +21,6 @@ public class CommieQuest {
 		frame.add(panel, BorderLayout.CENTER);
 		
 		// Fit window to screen
-		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (int)screensize.getWidth();
-		int height = (int)screensize.getHeight();
 		frame.setSize(width, height);
 		frame.setVisible(true);
 	}
