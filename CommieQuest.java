@@ -6,13 +6,11 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class CommieQuest {
-	static Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-	public static int width = (int)screensize.getWidth();
-	public static int height = (int)screensize.getHeight() - 100;
+	public static JFrame frame;
 	
 	public static void main(String[] args) {
 		// Creating new frame
-		JFrame frame = new JFrame("Commie Quest");
+		frame = new JFrame("Commie Quest");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		
@@ -20,8 +18,7 @@ public class CommieQuest {
 		Panel panel = new Panel();
 		frame.add(panel, BorderLayout.CENTER);
 		
-		// Fit window to screen
-		frame.setSize(width, height);
+		frame.setSize(900, 600);
 		frame.setVisible(true);
 	}
 }
