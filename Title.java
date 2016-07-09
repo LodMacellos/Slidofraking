@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Title extends Level {
 	ImageIcon intro = new ImageIcon("resources/intro.png");
-	Image scaleIntro = intro.getImage().getScaledInstance(height * 4 / 3, height, Image.SCALE_DEFAULT);
+	Image scaleIntro = intro.getImage().getScaledInstance((height - 50) * 4 / 3, height - 50, Image.SCALE_DEFAULT);
 	
 	public void resize(){
 		
