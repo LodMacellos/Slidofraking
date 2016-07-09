@@ -9,7 +9,13 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 	// Class needs serialVersionUID
 	private static final long serialVersionUID = 1L;
 	
+	// Current level, start at 0 (title)
 	public static int level = 0;
+	
+	// Window size
+	static Dimension windowsize = CommieQuest.frame.getBounds().getSize();
+	public static int width = (int)windowsize.getWidth();
+	public static int height = (int)windowsize.getHeight();
 	
 	// Create all levels
 	Level title = new Title();
@@ -18,14 +24,15 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 	// Update the frame
 	ActionListener update = new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
-			Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-			CommieQuest.width = (int)screensize.getWidth();
-			CommieQuest.height = (int)screensize.getHeight();
+			windowsize = CommieQuest.frame.getBounds().getSize();
+			width = (int)windowsize.getWidth();
+			height = (int)windowsize.getHeight();
+			levels[level].resize();
 			repaint();
 		}
 	};
 	
-	Panel(){	
+	Panel(){
 		setBackground(Color.white);
 	
 		// Set update every 20 milliseconds
@@ -66,7 +73,6 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 	// Paint the frame
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		levels[level].resize();
-		levels[level].paint(g);
+		levels[level].paintComponent(g);
 	}
 }
