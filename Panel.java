@@ -3,14 +3,24 @@ package main;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import level.*;
 
 public class Panel extends JPanel implements KeyListener, MouseListener, MouseMotionListener {
 	// Class needs serialVersionUID
 	private static final long serialVersionUID = 1L;
 	
+	public static int level = 0;
+	
+	// Create all levels
+	Level title = new Title();
+	Level[] levels = new Level[] {title};
+	
 	// Update the frame
 	ActionListener update = new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
+			Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+			CommieQuest.width = (int)screensize.getWidth();
+			CommieQuest.height = (int)screensize.getHeight();
 			repaint();
 		}
 	};
@@ -56,5 +66,7 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 	// Paint the frame
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		levels[level].resize();
+		levels[level].paint(g);
 	}
 }
