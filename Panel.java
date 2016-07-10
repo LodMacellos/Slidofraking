@@ -2,7 +2,7 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.Timer;
 import javafx.embed.swing.JFXPanel;
 import level.*;
 
