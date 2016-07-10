@@ -3,7 +3,7 @@ package level;
 import java.awt.*;
 import java.util.ArrayList;
 import main.Panel;
-import component.ImageResizeable;
+import media.ImageResizeable;
 
 public class Level {
 	int width;
@@ -26,7 +26,7 @@ public class Level {
 		
 	}
 	
-	public void resize(){
+	public void update(){
 		// Detect changes in window width
 		width = Panel.width;
 		height = Panel.height;
