@@ -13,8 +13,8 @@ public class Save implements Serializable {
 		this.number = number;
 	}
 
-	public void incrLevel(){
-		level++;
+	public void setLevel(int level){
+		this.level = level;
 	}
 
 	public void save(){
