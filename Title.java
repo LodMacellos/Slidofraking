@@ -11,10 +11,41 @@ public class Title extends Level {
 	long initTime = new Date().getTime();
 	Audio introMusic = new Audio("intro.mp3");
 	Audio homeMusic = new Audio("home.mp3");
-	boolean onHomeScreen = false;
+	int hoverSave = -1;
 
 	public Title(){
 		introMusic.play();
+	}
+
+	public void click(int x, int y){
+		int imgHeight = height - 50;
+		int imgWidth = 4 / 3 * imgHeight;
+		if (x > imgWidth / 6 + (width - imgWidth) / 2 &&
+				x < 5 * imgWidth / 6 + (width - imgWidth) / 2) {
+			for (int i = 0; i < 5; i++) {
+				if (y > (3 * i + 11) * imgHeight / 30 &&
+						y < (3 * i + 11) * imgHeight / 30 + imgHeight / 15) {
+					Panel.level = Panel.saves.get(i).level;
+					return;
+				}
+			}
+		}
+	}
+
+	public void mouseMove(int x, int y){
+		int imgHeight = height - 50;
+		int imgWidth = 4 / 3 * imgHeight;
+		if (x > imgWidth / 6 + (width - imgWidth) / 2 &&
+				x < 5 * imgWidth / 6 + (width - imgWidth) / 2) {
+			for (int i = 0; i < 5; i++) {
+				if (y > (3 * i + 11) * imgHeight / 30 &&
+						y < (3 * i + 11) * imgHeight / 30 + imgHeight / 15) {
+					hoverSave = i;
+					return;
+				}
+			}
+		}
+		hoverSave = -1;
 	}
 
 	public void update(){
@@ -56,12 +87,15 @@ public class Title extends Level {
 
 			super.paintComponent(g);
 
-			g.setColor(Color.black);
 			g.setFont(new Font("Courier New", Font.BOLD, height / 25));
 			for (int i = 0; i < 5; i++) {
-				int imgWidth = 4 / 3 * (height - 50);
+				g.setColor(Color.black);
+				if (hoverSave == i)
+					g.setColor(new Color(150, 150, 150));
+				int imgHeight = height - 50;
+				int imgWidth = 4 / 3 * imgHeight;
 				int x = imgWidth / 6 + (width - imgWidth) / 2;
-				int y = (3 * i + 11) * (height - 50) / 30 + (height - 50) / 20;
+				int y = (3 * i + 11) * imgHeight / 30 + imgHeight / 20;
 				g.drawString("Save " + (i + 1) + " - Level " + Panel.saves.get(i).level, x, y);
 			}
 		}
