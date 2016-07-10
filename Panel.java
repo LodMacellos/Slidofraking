@@ -2,9 +2,12 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.util.ArrayList;
 import javax.swing.Timer;
 import javafx.embed.swing.JFXPanel;
 import level.*;
+import saves.Save;
 
 public class Panel extends JFXPanel implements KeyListener, MouseListener, MouseMotionListener {
 	// Class needs serialVersionUID
@@ -21,6 +24,8 @@ public class Panel extends JFXPanel implements KeyListener, MouseListener, Mouse
 	// Create all levels
 	Level title = new Title();
 	Level[] levels = new Level[] {title};
+
+	public static ArrayList<Save> saves;
 
 	// Update the frame
 	ActionListener update = new ActionListener(){
@@ -45,6 +50,20 @@ public class Panel extends JFXPanel implements KeyListener, MouseListener, Mouse
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		setFocusable(true);
+
+		// Create all saves
+		saves = new ArrayList<Save>();
+		for (int i = 1; i < 6; i++) {
+			try {
+				FileInputStream fileIn = new FileInputStream("/saves/save" + i + ".ser");
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				saves.add((Save)in.readObject());
+				in.close();
+				fileIn.close();
+			} catch (IOException e) {
+				saves.add(new Save(i));
+			} catch (ClassNotFoundException c) {}
+		}
 	}
 
 	public void keyPressed(KeyEvent e){
