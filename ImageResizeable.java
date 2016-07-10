@@ -1,4 +1,4 @@
-package component;
+package media;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -9,19 +9,19 @@ public class ImageResizeable {
 	BufferedImage image = null;
 	public int x, y;
 	int width, height;
-	
-	public ImageResizeable(String imagePath, int x, int y, int width, int height){
+
+	public ImageResizeable(String filePath, int x, int y, int width, int height){
 		// Create unscaled image
 		try {
-			image = ImageIO.read(new File("resources/" + imagePath));
+			image = ImageIO.read(new File("resources/" + filePath));
 		} catch (IOException e) {}
-		
+
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 	}
-	
+
 	public Image scaledImage(){
 		// Scale image based on given height and width
 		return image.getScaledInstance(width, height, Image.SCALE_FAST);
