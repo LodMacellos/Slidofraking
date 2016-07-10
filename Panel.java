@@ -76,10 +76,12 @@ public class Panel extends JFXPanel implements KeyListener, MouseListener, Mouse
 
 	public void mousePressed(MouseEvent e){
 		int x = e.getX(), y = e.getY();
+		levels[level].click(x, y);
 	}
 
 	public void mouseMoved(MouseEvent e){
 		int x = e.getX(), y = e.getY();
+		levels[level].mouseMove(x, y);
 	}
 
 	// Unused events
