@@ -27,7 +27,7 @@ public class Audio {
 			public void run() {
 				playAudio.seek(Duration.ZERO);
 				playAudio.play();
-		       }
-		   });
+			}
+		});
 	}
 }
