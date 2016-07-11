@@ -25,6 +25,7 @@ public class Title extends Level {
 			for (int i = 0; i < 5; i++) {
 				if (y > (3 * i + 11) * imgHeight / 30 &&
 						y < (3 * i + 11) * imgHeight / 30 + imgHeight / 15) {
+					homeMusic.stop();
 					Panel.level = Panel.saves.get(i).level;
 					return;
 				}
