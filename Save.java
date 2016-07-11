@@ -24,9 +24,6 @@ public class Save implements Serializable {
 			out.writeObject(this);
 			out.close();
 			fileOut.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		} catch (IOException e) {}
 	}
 }
